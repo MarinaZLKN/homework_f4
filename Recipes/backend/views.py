@@ -1,9 +1,14 @@
-from rest_framework import generics, viewsets
+from rest_framework import viewsets
 from .models import Recipe, Category
 from .serializers import RecipeSerializer, CategorySerializer
 
 
 class RecipeAPIView(viewsets.ModelViewSet):
+    queryset = Recipe.objects.all()
+    serializer_class = RecipeSerializer
+
+
+class RecipeDetailView(viewsets.ModelViewSet):
     queryset = Recipe.objects.all()
     serializer_class = RecipeSerializer
 
@@ -23,9 +28,6 @@ class CategoryDetailView(viewsets.ModelViewSet):
         return recipes
 
 
-class RecipeDetailView(viewsets.ModelViewSet):
-    queryset = Recipe.objects.all()
-    serializer_class = RecipeSerializer
 
 
 
